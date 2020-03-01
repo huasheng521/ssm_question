@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.huapei.dao.QuestionDao">
+    <insert id="inserQuestion" parameterType="cn.huapei.model.question">
+        insert into question(question,a, b ,c,d,type) values (
+        #{questions.question},#{questions.a},#{questions.b}
+        ,#{questions.c},#{questions.d},#{questions.type}
+        )
+    </insert>
+    <select id="getAllQuestions" resultType="cn.huapei.model.question">
+        select * from question;
+    </select>
+
+    <insert id="insertFeedback" parameterType="cn.huapei.model.feedback">
+ insert into feedback(qu_id, question, daan,q_type)
+                        select #{feedback.qu_id},#{feedback.question},#{feedback.daan},#{feedback.q_type}
+                         from dual
+                      where not exists (
+                       select qu_id from feedback
+                       where daan = #{feedback.daan} )
+
+    </insert>
+    <select id="getAllFeedback" resultType="cn.huapei.model.feedback">
+        select * from feedback;
+    </select>
+
+    <update id="updateNum" parameterType="String" >
+        update feedback set num_daan=num_daan+1
+        where  daan=#{daan}
+    </update>
+
+    <delete id="delQuestionByid" parameterType="int">
+        delete from question where q_id=#{id}
+    </delete>
+    <delete id="delFeedbackByid" parameterType="int">
+        delete from feedback where qu_id=#{id}
+    </delete>
+</mapper>

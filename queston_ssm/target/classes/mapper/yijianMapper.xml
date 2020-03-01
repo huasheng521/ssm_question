@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="cn.huapei.dao.yijianMapper">
+    <insert id="insertyijian" parameterType="cn.huapei.model.yijian">
+        insert into yijianbiao
+        (a, b ,c,
+        d , e, f,
+        g  , h ,i ,
+         j ,k,  l,
+          m , n , o ,
+          p, q, r,
+          t , u , v ,
+           w)
+        VALUES (
+        #{yijian.a},#{yijian.b },#{yijian.c},
+        #{yijian.d },#{yijian.e},#{yijian.f},
+        #{yijian.g},#{yijian.h },#{yijian.i},
+        #{yijian.j},#{yijian.k},#{yijian.l},
+        #{yijian.m },#{yijian.n},#{yijian.o },
+        #{yijian.p},#{yijian.q},#{yijian.r},
+        #{yijian.t},#{yijian.u },#{yijian.v },
+        #{yijian.w}
+        );
+    </insert>
+
+</mapper>
